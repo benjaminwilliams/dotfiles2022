@@ -111,11 +111,6 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
-try
-    colorscheme gruvbox
-catch
-endtry
-
 set background=dark
 
 " Set extra options when running in GUI mode
@@ -356,8 +351,8 @@ endif
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 " Mappings
-map <C-n> : NERDTreeToggle<CR>
-map <C-f> : CtrlP<CR>
+map <C-f> : NERDTreeToggle<CR>
+map <C-p> : CtrlP<CR>
 " map <C-i> : YcmCompleter GoTo<CR>
 
 " Buffer swap
@@ -371,18 +366,12 @@ setl number
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-"Pathogen plugin manager
-" execute pathogen#infect()
-
 " 2 space tabs, for JS. How do I make this  language specific?
 set tabstop=2 shiftwidth=2
 
 " ignore common build and excluded files when searching
 set  wildignore+=*/dist/*,*/build/*,*/node_modules/*,*/coverage/*
 
-" gruvbox colorscheme
-autocmd vimenter * ++nested colorscheme gruvbox
-set background=dark
 
 " NERDtree show dotfiles by default
 let NERDTreeShowHidden=1
@@ -397,14 +386,37 @@ Plug 'preservim/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'https://github.com/airblade/vim-gitgutter.git'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-" post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {'do': 'yarn install'}
+Plug 'preservim/vim-markdown'
+Plug 'mattn/emmet-vim'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+
 
 " Initialize plugin system
 call plug#end()
 
+" Syntastic recommended options
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" gruvbox colorscheme
+let g:gruvbox_italic=1
+let g:gruvbox_improved_strings=1
+let g:gruvbox_improved_warnings=1
+autocmd vimenter * ++nested colorscheme gruvbox
+let g:airline_theme="gruvbox"
+set background=dark
