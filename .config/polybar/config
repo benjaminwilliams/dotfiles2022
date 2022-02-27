@@ -46,7 +46,7 @@ alert = #fb4934
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 20
-fixed-center = false
+fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 padding-left = 0
@@ -58,17 +58,17 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = "fontAwesome:style=Regular:size=11:antialias=truee;2"
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = xbacklight pulseaudio memory cpu date powermenu
+modules-right = pulseaudio memory cpu date powermenu
 tray-position = right
-tray-padding = 0
-tray-background = #0063ff
-;wm-restack = bspwm
-;wm-restack = i3
-;override-redirect = true
+tray-padding = 5
+tray-background = ${colors.background-alt}
+wm-restack = i3
+override-redirect = true
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 cursor-click = pointer
 cursor-scroll = ns-resize
+
 
 [module/xwindow]
 inherit            = powerline-templates/left-to-right-item
@@ -148,8 +148,8 @@ inherit = powerline-templates/right-to-left-item
 background        = ${colors.bg3}
 background-next   = ${colors.bg4}
 type              = internal/memory
-format-background = ${self.bg3}
-format-foreground = ${colors.black}
+format-background = ${colors.bg3}
+format-foreground = ${colors.background}
 label             = "%gb_used%/%gb_total% "
 label-background  = ${colors.bg3}
 label-foreground  = ${colors.green}
@@ -210,8 +210,6 @@ type = internal/pulseaudio
 
 format-volume =  <label-volume>
 label-volume = %percentage%%
-;label-volume-foreground = ${root.foreground}
-label-volume-background = ${color.bg4}
 label-background = ${color.bg4}
 format-background = ${color.bg4}
 format-volume-background = ${colors.bg4}
@@ -331,4 +329,3 @@ screenchange-reload = true
 margin-top = 5
 margin-bottom = 5
 
-; vim:ft=dosini

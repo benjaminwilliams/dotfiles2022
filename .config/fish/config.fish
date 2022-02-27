@@ -12,4 +12,5 @@ set -g theme_title_display_path yes
 set -g theme_display_user yes
 set -g theme_display_hostname yes
 set -g theme_display_vi yes
-set theme_color_scheme gruvbox
+set -g theme_color_scheme gruvbox
+# set theme_gruvbox dark medium
