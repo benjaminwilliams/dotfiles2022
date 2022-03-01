@@ -46,8 +46,8 @@ mpd_port = 6600
 ## visualization or 44100:16:2 for stereo visualization. As an example here is
 ## the relevant section for mpd.conf:
 ##
-## audio_output {
-##        type            "fifo"
+audio_output {
+type            "fifo"
 ##        name            "Visualizer feed"
 ##        path            "/tmp/mpd.fifo"
 ##        format          "44100:16:2"

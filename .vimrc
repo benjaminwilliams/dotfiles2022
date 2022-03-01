@@ -414,9 +414,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " gruvbox colorscheme
-let g:gruvbox_italic=1
-let g:gruvbox_improved_strings=1
-let g:gruvbox_improved_warnings=1
 autocmd vimenter * ++nested colorscheme gruvbox
 let g:airline_theme="gruvbox"
 set background=dark
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
