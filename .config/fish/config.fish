@@ -27,4 +27,5 @@ alias cvim='vim ~/.vimrc'
 alias ckitty='vim ~/.config/kitty/kitty.conf'
 alias sshh='rofi -show ssh'
 alias music='systemctl --user start mopidy.service'
+alias notes='cd ~/nextcloud/obsidian/ & vim'
 

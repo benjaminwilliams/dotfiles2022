@@ -393,12 +393,20 @@ Plug 'https://github.com/airblade/vim-gitgutter.git'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'prettier/vim-prettier', {'do': 'yarn install'}
-Plug 'preservim/vim-markdown'
 Plug 'mattn/emmet-vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
+Plug 'eslint/eslint'
+Plug 'dense-analysis/ale'
 
+" ale linter
+
+let g:ale_fixers = {
+   \ 'javascript': ['eslint'],
+   \ 'typescript': ['eslint']
+ \ }
+let g:ale_fix_on_save = 1
 
 " Initialize plugin system
 call plug#end()
