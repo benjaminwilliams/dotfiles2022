@@ -17,7 +17,7 @@
 ;==========================================================
 
 
-include-file = ~/.config/polybar/powerline-for-polybar/powerline-for-polybar.config
+;include-file = ~/.config/polybar/powerline-for-polybar/powerline-for-polybar.config
 
 [colors]
 red = #cc241d
@@ -34,42 +34,36 @@ bg2 = #504945
 bg3 = #665c54
 bg4 = #7c6f64
 fg1 = #ebdbb2
+background = #282828
 background-alt = #32302f
+foreground = #ebdbb2
 foreground-alt = #d5c4a1
 primary = #83a598
 secondary = #fabd2f
 alert = #fb4934
 
-background = #1a1b26
-background2 = #414868
-foreground = #a9b1d6
-
-
-
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 20
+height = 30
+offset-y = 5
 fixed-center = true
-background = ${colors.background}
+;background = ${colors.background}
+background = #00000000
 foreground = ${colors.foreground}
-padding-left = 0
-padding-right = 0
+padding-left = 2.5
+padding-right = 2.5
 module-margin-left = 0
-module-margin-right = 0
+module-margin-right = 5
 font-0 = "Inconsolata for Powerline:pixelsize=15:antialias=true;3"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = "fontAwesome:style=Regular:size=11:antialias=truee;2"
-
-
 modules-left = i3 xwindow
 modules-center = mpd
 modules-right = pulseaudio memory cpu date powermenu
-
-
 tray-position = right
 tray-padding = 5
-tray-background = ${colors.background}
+tray-background = ${colors.background-alt}
 wm-restack = i3
 override-redirect = true
 scroll-up = i3wm-wsnext
@@ -79,11 +73,16 @@ cursor-scroll = ns-resize
 
 
 [module/xwindow]
-label-background = ${colors.background}
+background         = ${colors.bg3}
+background-next    = ${colors.background}
+label-background = ${colors.bg3}
 type = internal/xwindow
 label = " %title:0:40:...%"
 
 [module/filesystem]
+;inherit = powerline-templates/right-to-left-item
+background        = ${colors.purple}
+background-next   = ${colors.background}
 type = internal/fs
 interval = 25
 mount-0 = /
@@ -93,7 +92,10 @@ label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
-format-background = ${colors.background}
+;inherit            = powerline-templates/left-to-right-item
+background         = ${colors.bg2}
+background-next    = ${colors.bg3}
+format-background = ${colors.bg2}
 type = internal/i3
 format = <label-state> <label-mode>
 ws-icon-0 = 1;
@@ -103,25 +105,21 @@ ws-icon-3 = 4;
 ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-6 = 7;7
-ws-icon-7 = 8;
+ws-icon-7 = 8;8
 ws-icon-8 = 9;9
 ws-icon-9 = 10;10
+margin = 10
 
 ; focused
 label-focused = %icon%
-label-focused-foreground = ${colors.background}
-label-focused-background = ${colors.foreground}
+label-focused-foreground = ${colors.bg1}
+label-focused-background = ${colors.fg1}
 label-focused-padding = 2
 ; unfocused
 label-unfocused = %icon%
-label-unfocused-foreground = ${colors.foreground}
-label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.fg1}
+label-unfocused-background = ${colors.bg2}
 label-unfocused-padding = 2
-; visible
-label-visible = %icon%
-label-visible-foreground = ${colors.foreground}
-label-visible-background = ${colors.background2}
-label-visible-padding = 2
 
 [module/mpd]
 type = internal/mpd
@@ -136,27 +134,31 @@ label-song-ellipsis = true
 icon-prev-padding-left = 2
 
 [module/cpu]
+;inherit = powerline-templates/right-to-left-item
+background        = ${colors.bg2}
+background-next   = ${colors.bg3}
 type = internal/cpu
 interval = 2
-format-background = ${colors.background}
+format-background = ${colors.bg2}
 ;format-prefix = " "
 ;format-prefix-foreground = ${colors.foreground-alt}
 label = "CPU: %percentage:2%%"
-;label-foreground = ${colors.aqua}
-label-padding = 2
+label-foreground = ${colors.aqua}
 click-left = ~/.config/rofi/applets/menu/volume.sh &
 
 [module/memory]
+;inherit = powerline-templates/right-to-left-item
+background        = ${colors.bg3}
+background-next   = ${colors.bg4}
 type              = internal/memory
-format-background = ${colors.foreground}
+format-background = ${colors.bg3}
 format-foreground = ${colors.background}
-label             = "%gb_used%/%gb_total%"
-label-background  = ${colors.foreground}
-label-foreground  = ${colors.background}
-label-padding = 1
+label             = "%gb_used%/%gb_total% "
+label-background  = ${colors.bg3}
+label-foreground  = ${colors.green}
 
 [module/logo]
-inherit            = powerline-templates/left-to-right-item
+;inherit            = powerline-templates/left-to-right-item
 background         = ${colors.red}
 background-next    = ${colors.bg2}
 type               = custom/text
@@ -181,6 +183,9 @@ label-connected = %local_ip%
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
+;inherit = powerline-templates/right-to-left-item
+background        = ${colors.background}
+background-next   = ${colors.bg2}
 type = internal/date
 interval = 5
 
@@ -194,22 +199,25 @@ time = %H:%M
 ;format-prefix = 
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #0a6cf5
-label-foreground = ${colors.background}
-label-background = ${colors.foreground}
-label-padding = 1
+format-background = ${colors.background}
+label-foreground = ${colors.yellow}
+
 label = %date% %time%
 
 
 [module/pulseaudio]
+;inherit = powerline-templates/right-to-left-item
+background        = ${colors.bg4}
+background-next   = ${colors.background}
 type = internal/pulseaudio
 
-format-volume = <label-volume>
+format-volume =  <label-volume>
 label-volume = %percentage%%
-label-background = ${color.background}
-format-background = ${color.background}
-format-volume-background = ${colors.background}
-label-volume-padding = 2
-label-muted = muted
+label-background = ${color.bg4}
+format-background = ${color.bg4}
+format-volume-background = ${colors.bg4}
+
+label-muted =  muted
 label-muted-foreground = ${colors.foreground}
 label-muted-background = ${colors.red}
 
@@ -318,7 +326,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-;pseudo-transparency = false
+pseudo-transparency = true
 
 [global/wm]
 margin-top = 5
