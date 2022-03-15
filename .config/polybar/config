@@ -154,9 +154,6 @@ label-foreground  = ${colors.background}
 label-padding = 1
 
 [module/logo]
-inherit            = powerline-templates/left-to-right-item
-background         = ${colors.red}
-background-next    = ${colors.bg2}
 type               = custom/text
 content-background = ${self.background}
 content-foreground = ${colors.foreground}
