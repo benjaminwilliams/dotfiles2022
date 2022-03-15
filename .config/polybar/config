@@ -17,8 +17,6 @@
 ;==========================================================
 
 
-include-file = ~/.config/polybar/powerline-for-polybar/powerline-for-polybar.config
-
 [colors]
 red = #cc241d
 green = #b8bb26
