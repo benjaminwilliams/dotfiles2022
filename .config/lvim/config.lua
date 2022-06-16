@@ -11,7 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "nord"
+lvim.colorscheme = "gruvbox"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -138,6 +138,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
+{"ellisonleao/gruvbox.nvim"},
   {"christianchiarulli/nvcode-color-schemes.vim"},
   {"lunarvim/colorschemes"}
 }

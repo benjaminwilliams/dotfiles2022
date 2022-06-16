@@ -194,7 +194,7 @@ workspace 1 output HDMI-A-0
 workspace 2 output HDMI-A-0
 
 bindsym $mod+r mode "resize"
-exec --no-startup-id feh --bg-scale ~/Pictures/mushroom.png
+exec --no-startup-id feh --bg-scale ~/Pictures/gruv.png
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -203,7 +203,7 @@ exec --no-startup-id feh --bg-scale ~/Pictures/mushroom.png
 #        position top
 # }
 for_window [class=".*"] border pixel 0
-gaps inner 0
+gaps inner 15
 smart_borders on
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
