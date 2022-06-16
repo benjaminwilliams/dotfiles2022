@@ -16,8 +16,8 @@
 ;
 ;==========================================================
 
-
-[colors]
+; Nord
+[colorsNord]
 red = #cc241d
 green = #b8bb26
 yellow = #fabd2f
@@ -42,27 +42,55 @@ background = #1a1b26
 background2 = #414868
 foreground = #a9b1d6
 
+; 
+[colors]
+red = #cc241d
+green = #b8bb26
+yellow = #fabd2f
+blue = #458588
+purple = #b16286
+aqua = #8ec07c
+gray = #7c6f64
+orange = #d65d0e
+bg0 = #282828
+bg1 = #3c3836
+bg2 = #504945
+bg3 = #665c54
+bg4 = #7c6f64
+fg1 = #ebdbb2
+background-alt = #32302f
+foreground-alt = #d5c4a1
+primary = #83a598
+secondary = #fabd2f
+alert = #fb4934
+bg = #3c3836
+
+background = #3c3836
+bgt = #3c3836
+background2 = #414868
+foreground = #ebdbb2
 
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 20
+height = 30
 fixed-center = true
-background = ${colors.background}
+background = ${colors.bgt}
 foreground = ${colors.foreground}
 padding-left = 0
 padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
-font-0 = "Inconsolata for Powerline:pixelsize=15:antialias=true;3"
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = "fontAwesome:style=Regular:size=11:antialias=truee;2"
+;font-0 = "Inconsolata for Powerline:pixelsize=15:antialias=true;3"
+font-0 = "DejaVuSansMono Nerd Font Mono:size:13:antialias=true;3"
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+;font-2 = "fontAwesome:style=Regular:size=11:antialias=truee;2"
 
 
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = pulseaudio memory cpu date powermenu
+modules-right = backlight battery pulseaudio memory cpu date powermenu
 
 
 tray-position = right
@@ -75,9 +103,17 @@ scroll-down = i3wm-wsprev
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+enable-scroll = true
+format-padding = 1
+format-prefix= "scr:"
+format-foreground = ${colors.purple}
 
 [module/xwindow]
-label-background = ${colors.background}
+label-foreground = ${colors.foreground}
+label-background = ${colors.bg}
 type = internal/xwindow
 label = " %title:0:40:...%"
 
@@ -139,19 +175,20 @@ interval = 2
 format-background = ${colors.background}
 ;format-prefix = " "
 ;format-prefix-foreground = ${colors.foreground-alt}
-label = "CPU: %percentage:2%%"
-;label-foreground = ${colors.aqua}
-label-padding = 2
+label = "cpu:%percentage:2%%"
+label-foreground = ${colors.aqua}
+format-padding = 1
 click-left = ~/.config/rofi/applets/menu/volume.sh &
 
 [module/memory]
 type              = internal/memory
 format-background = ${colors.foreground}
 format-foreground = ${colors.background}
-label             = "%gb_used%/%gb_total%"
-label-background  = ${colors.foreground}
-label-foreground  = ${colors.background}
-label-padding = 1
+;label             = "%gb_used%/%gb_total%"
+label             = ram:%percentage_used%%
+label-background  = ${colors.background}
+label-foreground  = ${colors.yellow}
+;label-padding = 1
 
 [module/logo]
 type               = custom/text
@@ -189,75 +226,44 @@ time = %H:%M
 ;format-prefix = 
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #0a6cf5
-label-foreground = ${colors.background}
-label-background = ${colors.foreground}
-label-padding = 1
+label-foreground = ${colors.blue}
+label-background = ${colors.background}
+label-padding = 0
 label = %date% %time%
 
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume>
+format-volume = vol:<label-volume>
 label-volume = %percentage%%
-label-background = ${color.background}
+format-volume-foreground = ${color.reud}
 format-background = ${color.background}
 format-volume-background = ${colors.background}
-label-volume-padding = 2
+format-volume-padding = 1
 label-muted = muted
 label-muted-foreground = ${colors.foreground}
 label-muted-background = ${colors.red}
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = ADP1
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
+full-at = 100
+label-charging-foreground = ${colors.green}
+format-charging = bat:<label-charging> charging
 format-charging-underline = #ffb52a
 
-format-discharging = <animation-discharging> <label-discharging>
+label-discharging-foreground = ${colors.orange}
+format-discharging = bat:<label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+label-full-foreground = ${colors.green}
+format-full-prefix = "bat:"
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature

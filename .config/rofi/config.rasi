@@ -148,4 +148,5 @@ terminal: "kitty";
 }
 //@theme "/home/ben/.config/rofi/themes/gruvbox-dark-soft.rasi"
 //@theme "/usr/share/rofi/themes/solarized.rasi"
-@theme "/usr/share/rofi/themes/Adapta-Nokto.rasi"
+//@theme "/usr/share/rofi/themes/Adapta-Nokto.rasi"
+@theme "/usr/share/rofi/themes/gruvbox-light-soft.rasi"
