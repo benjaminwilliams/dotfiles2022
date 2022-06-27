@@ -11,7 +11,8 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "gruvbox"
+vim.g.catppuccin_flavour = "frappe"
+lvim.colorscheme = "catppuccin"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -140,7 +141,11 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.plugins = {
 {"ellisonleao/gruvbox.nvim"},
   {"christianchiarulli/nvcode-color-schemes.vim"},
-  {"lunarvim/colorschemes"}
+  {"lunarvim/colorschemes"},
+{
+	"catppuccin/nvim",
+	as = "catppuccin"
+}
 }
 -- lvim.plugins = {
 --     {"folke/tokyonight.nvim"},
